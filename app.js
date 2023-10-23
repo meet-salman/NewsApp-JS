@@ -10,25 +10,24 @@ search.addEventListener('submit', async (e) => {
 
     try {
         let cricket = await axios.get(`https://newsapi.org/v2/everything?q=${input.value}&apiKey=449e5df8cd30457591c693086e844d46`)
-        cricket = cricket.data.articles.slice(0, 20)
-        console.log(cricket);
+        cricket = cricket.data.articles.slice(0, 20);
         allNews = [...cricket];
-
-        cricket.forEach((item, index) => {
-
-            cardsBox.innerHTML += `
-            <div  id="card"">
-                <img src="${item.urlToImage}" alt="">
-                <h3  id="heading" onclick="saveData(${index})">${item.title}</h3>
-            </div>
-        `
-        });
-
-        input.value = ''
     }
     catch {
         console.log('No data found');
     }
+
+    input.value = '';
+    cardsBox.innerHTML = '';
+    allNews.forEach((item, index) => {
+
+        cardsBox.innerHTML += `
+        <div  id="card"">
+            <img src="${item.urlToImage}" alt="">
+            <h3  id="heading" onclick="saveData(${index})">${item.title}</h3>
+        </div>
+    `
+    });
 
 });
 
