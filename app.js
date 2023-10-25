@@ -12,6 +12,7 @@ search.addEventListener('submit', async (e) => {
         let cricket = await axios.get(`https://newsapi.org/v2/everything?q=${input.value}&apiKey=449e5df8cd30457591c693086e844d46`)
         cricket = cricket.data.articles.slice(0, 20);
         allNews = [...cricket];
+        console.log(cricket);
     }
     catch {
         console.log('No data found');
@@ -25,6 +26,7 @@ search.addEventListener('submit', async (e) => {
         <div  id="card"">
             <img src="${item.urlToImage}" alt="">
             <h3  id="heading" onclick="saveData(${index})">${item.title}</h3>
+            <p> ${item.content.slice(0, 70)}<b>...</b> </p>
         </div>
     `
     });
