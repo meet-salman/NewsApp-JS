@@ -25,7 +25,7 @@ search.addEventListener('submit', async (e) => {
         cardsBox.innerHTML += `
         <div  id="card"">
             <img src="${item.urlToImage}" alt="">
-            <h3  id="heading" onclick="saveData(${index})">${item.title}</h3>
+            <h3  id="heading" onclick="saveData(${index})">${item.title.slice(0, 27)}...</h3>
             <p> ${item.content.slice(0, 70)}<b>...</b> </p>
         </div>
     `
